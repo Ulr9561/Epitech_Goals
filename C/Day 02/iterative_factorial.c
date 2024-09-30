@@ -83,12 +83,15 @@ int my_strncmp(char const *s1, char const *s2, int n)
 {
     if (s1 == NULL || s2 == NULL)
     {
-        return (s1 == s2) ? 0 : (s1 == NULL) ? -1 : 1;
+        return (s1 == s2) ? 0 : (s1 == NULL) ? -1
+                                             : 1;
     }
     for (int i = 0; i < n; i++)
     {
-        if(s1[i] == '\0' || s2[i] == '\0') {
-            return (s1 == s2) ? 0 : (s1 == NULL) ? -1 : 1;
+        if (s1[i] == '\0' || s2[i] == '\0')
+        {
+            return (s1 == s2) ? 0 : (s1 == NULL) ? -1
+                                                 : 1;
         }
         if (s1[i] > s2[i])
         {
@@ -102,9 +105,33 @@ int my_strncmp(char const *s1, char const *s2, int n)
     return 0;
 }
 
+char *my_strstr(char *str, char const *to_find)
+{
+    if(str == "" || to_find == "") {
+        return NULL;
+    }
+    int i = 0, j = 0;
+    while (i < strlen(str))
+    {
+        if (str[i] == to_find[j])
+        {
+            j++;
+            if (to_find[j] == '\0')
+            {
+                return &str[i - j + 1];
+            }
+        }
+        else
+        {
+            j = 0;
+        }
+        i++;
+    };
+}
+
 int main()
 {
-    int result = my_strncmp("    ", "Hello, everyone!", 8);
-    printf("%d", result);
+    char *result = my_strstr("GeeksforGeeks", "for");
+    printf("%s", result);
     return 0;
 }
