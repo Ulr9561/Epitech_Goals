@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 
 int iterative_factorial(int nb)
@@ -107,7 +108,8 @@ int my_strncmp(char const *s1, char const *s2, int n)
 
 char *my_strstr(char *str, char const *to_find)
 {
-    if(str == "" || to_find == "") {
+    if (str == "" || to_find == "")
+    {
         return NULL;
     }
     int i = 0, j = 0;
@@ -129,9 +131,72 @@ char *my_strstr(char *str, char const *to_find)
     };
 }
 
+char *my_strupcase(char *str)
+{
+    char *new_str = malloc(strlen(str) + 1);
+    if (str == "")
+    {
+        return NULL;
+    }
+
+    for (int i = 0; i < strlen(str); i++)
+    {
+        new_str[i] = toupper(str[i]);
+    }
+
+    new_str[strlen(str)] = '\0';
+
+    return new_str;
+}
+
+char *my_strcapitalize(char *str)
+{
+    const char *delimiter = " ";
+    int i = 0;
+    char *token;
+    char *str_copy = strdup(str);
+    char *result = malloc(strlen(str) + 1);
+    result[0] = '\0';
+    char *context;
+
+    if (str_copy == NULL)
+    {
+        return NULL;
+    }
+
+    token = strtok_s(str_copy, delimiter, &context);
+
+    while (token != NULL)
+    {
+        int capitalize_next = 0;
+
+        for (int i = 0; i < strlen(token); i++)
+        {
+            if (isalpha(token[i]) && !capitalize_next)
+            {
+                token[i] = toupper((unsigned char)token[i]);
+                capitalize_next = 1;
+            }
+            else if (token[i] == '-' || token[i] == '+')
+            {
+                capitalize_next = 0;
+            }
+        }
+        strcat(result, token);
+        strcat(result, " ");
+
+        printf("%s\n", result);
+        token = strtok_s(NULL, delimiter, &context);
+    }
+
+    free(str_copy);
+
+    return NULL;
+}
+
 int main()
 {
-    char *result = my_strstr("GeeksforGeeks", "for");
+    char *result = my_strcapitalize("hey, how are you? 42WORds forty-two; fifty+one");
     printf("%s", result);
     return 0;
 }
