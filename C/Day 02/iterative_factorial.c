@@ -88,7 +88,7 @@ int my_strncmp(char const *s1, char const *s2, int n)
     for (int i = 0; i < n; i++)
     {
         if(s1[i] == '\0' || s2[i] == '\0') {
-            
+            return (s1 == s2) ? 0 : (s1 == NULL) ? -1 : 1;
         }
         if (s1[i] > s2[i])
         {
@@ -104,16 +104,7 @@ int my_strncmp(char const *s1, char const *s2, int n)
 
 int main()
 {
-    char *dest = NULL;
-    dest = my_strcpy(dest, "Alloah");
-    if (dest != NULL)
-    {
-        printf("%s", dest);
-        free(dest);
-    }
-    else
-    {
-        printf("Error");
-    }
+    int result = my_strncmp("    ", "Hello, everyone!", 8);
+    printf("%d", result);
     return 0;
 }
