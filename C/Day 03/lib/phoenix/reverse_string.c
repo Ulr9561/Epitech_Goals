@@ -1,9 +1,21 @@
 #include <string.h>
+#include <stdlib.h>
 
-char reverse_string(char const *str)
+char *reverse_string(const char *str)
 {
-    for (int i = strlen(str); i >= 0; i--)
+    int length = strlen(str);
+    char *reversed = malloc(length + 1); 
+
+    if (reversed == NULL)
     {
-        printf("%c", str[i]);
+        return NULL;
     }
+
+    for (int i = 0; i < length; i++)
+    {
+        reversed[i] = str[length - 1 - i];
+    }
+    reversed[length] = '\0';
+
+    return reversed;
 }

@@ -2,12 +2,12 @@
 
 char *my_strstr(char *str, char const *to_find)
 {
-    if (str == "" || to_find == "")
+    if (strcmp(str, "") == 0 || strcmp(to_find, "") == 0)
     {
-        return NULL;
+        return (char *)str;
     }
-    int i = 0, j = 0;
-    while (i < strlen(str))
+    size_t i = 0, j = 0;
+    while (str[i] != '\0')
     {
         if (str[i] == to_find[j])
         {
@@ -23,4 +23,5 @@ char *my_strstr(char *str, char const *to_find)
         }
         i++;
     };
+    return NULL;
 }

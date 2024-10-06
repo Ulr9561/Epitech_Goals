@@ -1,4 +1,5 @@
 #include <string.h>
+#include "libphoenix.h"
 
 int show_string(char const *str)
 {
