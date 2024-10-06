@@ -1,4 +1,6 @@
 *.o
 *.out
 
+.gitignore
+.vscode/
 obj/
