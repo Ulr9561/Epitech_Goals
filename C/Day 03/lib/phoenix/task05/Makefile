@@ -3,11 +3,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: prog
 
-prog: show_params.o
-	$(CC) $(CFLAGS) -o prog show_params.o
+prog: sorted_params.o
+	$(CC) $(CFLAGS) -o prog sorted_params.o
 
-show_params.o: show_params.c
-	$(CC) $(CFLAGS) -c show_params.c
+sorted_params.o: sorted_params.c
+	$(CC) $(CFLAGS) -c sorted_params.c
 
 clean:
 	rm -f *.o
