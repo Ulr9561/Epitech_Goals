@@ -5,6 +5,7 @@
 
 void my_putchar(char c);
 char *concat_strings(char *dest, char const *src);
+char *concat_parameters(int argc, char **argv);
 int show_number(int nb);
 int show_string(char const *str);
 char *reverse_string(char *str);

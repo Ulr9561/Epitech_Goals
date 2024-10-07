@@ -8,7 +8,7 @@ OBJDIR = obj
 
 # Liste des fichiers source
 SRCS = my_putchar.c show_number.c show_string.c reverse_string.c to_number.c \
-       is_prime_number.c my_strcpy.c my_strncmp.c my_strstr.c
+       is_prime_number.c my_strcpy.c my_strncmp.c my_strstr.c concat_strings.c
 
 # Générer les fichiers objets correspondants
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
