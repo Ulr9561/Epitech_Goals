@@ -16,4 +16,3 @@ fclean: clean
 	rm -f prog
 
 re: fclean all
-	
